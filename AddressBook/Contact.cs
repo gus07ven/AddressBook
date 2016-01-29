@@ -1,45 +1,34 @@
 ﻿using System;
 
-public class Contact
+
+namespace AddressBook
 {
-    String name;                // First name.
-    int phoneNumber;            // Phone number.
-    private string phone;
-
-    public Contact()
-	{
-	}
-
-    public Contact(String a, int b)
+    public class Contact
     {
-        this.name = a;
-        this.phoneNumber = b;
-    }
+        private string name { get; set; }                // First name.
+        private long phoneNumber { get; set; }            // Phone number.
+        
+        public Contact()
+        {
+            this.name = "John Doe";
+            this.phoneNumber = 9999999999;
+        }
 
-    public Contact(string name, string phone)
-    {
-        this.name = name;
-        this.phone = phone;
-    }
+        public Contact(string a, long b)
+        {
+            name = a;
+            phoneNumber = b;
+        }
 
-    public String getFirstName()
-    {
-        return firstName;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public long PhoneNumber
+        {
+            get { return phoneNumber; }
+            set { phoneNumber = value; }
+        }
     }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public long getPhoneNumber()
-    {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber)
-    {
-        this.phoneNumber = phoneNumber;
-    }
-
 }

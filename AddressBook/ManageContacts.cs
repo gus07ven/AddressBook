@@ -8,56 +8,53 @@ namespace AddressBook
 {
     class ManageContacts
     {
-        List<Contact> list = new List<Contact>();
-
-        static void Main(string[] args)
+        static void Main()
         {
+            List<Contact> list = new List<Contact>();
 
-            // Ask for user to select an option.
-            Console.WriteLine("Please select an option:");
-            Console.WriteLine("1. Add contact");
-            Console.WriteLine("2. List contacts");
-            Console.WriteLine("3. Exit");
-            String input = Console.ReadLine();
+            int selection = menu();
 
-            // Loop while user does not select exit.
             do
             {
-                switch (input)
+                switch (selection)
                 {
-                    case "1":
-                        AddContact();
+                    case 1:
+                        Console.WriteLine("Please enter a name:");
+                        string nameIn = Console.ReadLine();
+                        Console.WriteLine("Please enter a phone number:");
+                        string numIn = Console.ReadLine();
+                        long phoneIn = Int64.Parse(numIn);
+                        list.Add(new Contact(nameIn, phoneIn));
+                        Console.WriteLine("The contact has been added");
+                        Console.WriteLine();
                         break;
-                    case "2":
-                        ListContacts();
+                    case 2:
+                        for (int i = 0; i < list.Count; i++)
+                            Console.WriteLine("{0}, {1}", list[i].Name, list[i].PhoneNumber);
+                        Console.WriteLine();
+                        break;
+                    case 3:
+                        Console.WriteLine("Press any key to exit.");
+                        Console.ReadLine();
                         break;
                     default:
-                        
+                        Console.WriteLine();
+                        menu();
                         break;
                 }
-            } while (input != "3");
+                selection = menu();
+            } while (selection != 3);        
         }
 
-
-        static String AddContact()
+        public static int menu()
         {
-            Console.WriteLine("Please enter the name:");
-            String name = Console.ReadLine();
-            Console.WriteLine("Please enter the phone number:");
-            String phone = Console.ReadLine();
-            Contact addPerson = new Contact(name, phone);
-            list.Add(addPerson);
-            String message = "The name and phone number have been added";
-            return message;
+            Console.WriteLine("Please select an option:");
+            Console.WriteLine("1. Add a contact.");
+            Console.WriteLine("2. Show contact list.");
+            Console.WriteLine("3. Exit.");
+            string enter = Console.ReadLine();
+            int input = Int32.Parse(enter);
+            return input;
         }
-
-        static Contact ListContacts()
-        {
-            foreach (Contact value in list)
-                Console.WriteLine(value);
-            return null;
-        }
-
     }
-
 }
