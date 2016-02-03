@@ -30,11 +30,10 @@ namespace AddressBook
                         break;
                     case 2:
                         for (int i = 0; i < list.Count; i++)
-                            Console.WriteLine("{0}, {1}", list[i].Name, list[i].PhoneNumber);
+                            Console.WriteLine("{0}, {1}", list[i].name, list[i].phoneNumber);
                         Console.WriteLine();
                         break;
                     case 3:
-                        Console.WriteLine("Press any key to exit.");
                         Console.ReadLine();
                         break;
                     default:
